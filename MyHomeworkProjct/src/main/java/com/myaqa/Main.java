@@ -9,7 +9,7 @@ public class Main {
         // Задание 2
         VoidMethod.checkPositiveNumber(1);
         // Задание 3
-        System.out.println("Это отрицательное число: " + ReturnMethods.isPositiveNumber(10));
+        System.out.println("Это отрицательное число: " + ReturnMethods.isNegativeNumber(-10));
         // Задание 4
         VoidMethod.printStringNtimes("I love Java", 3);
         // Задание 5
@@ -30,6 +30,6 @@ public class Main {
         VoidArrays.fillDiagonalWithOnes(diagonalMatrix);
         System.out.println("Заполненый массив 1 по диогонали: " + Arrays.deepToString(diagonalMatrix));
         // Задание 10
-        System.out.println("Task 10: " + Arrays.toString(ReturnArrays.createArray(6, 9)));
+        System.out.println("Каждая ячейка равна initialValue:  " + Arrays.toString(ReturnArrays.createArray(6, 9)));
     }
 }

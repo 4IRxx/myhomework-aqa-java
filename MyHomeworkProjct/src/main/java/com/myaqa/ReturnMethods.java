@@ -7,7 +7,7 @@ public class ReturnMethods {
         return sum > 10 && sum <= 20;
     }
 
-    public static boolean isPositiveNumber(int y) {
+    public static boolean isNegativeNumber(int y) {
         return y < 0;
     }
 
