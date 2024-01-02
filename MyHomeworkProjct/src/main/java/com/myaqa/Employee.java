@@ -18,13 +18,16 @@ public class Employee {
     }
 
     public void showInfo() {
-        System.out.println("ФИО: " + fullName);
-        System.out.println("Должность: " + position);
-        System.out.println("Email: " + email);
-        System.out.println("Телефон: " + phone);
-        System.out.println("Зарплата: " + salary);
-        System.out.println("Возраст: " + age);
-        System.out.println();
+        StringBuilder info = new StringBuilder();
+        info.append("ФИО: ").append(fullName)
+                .append("\nДолжность: ").append(position)
+                .append("\nEmail: ").append(email)
+                .append("\nТелефон: ").append(phone)
+                .append("\nЗарплата: ").append(salary)
+                .append("\nВозраст: ").append(age)
+                .append("\n");
+
+        System.out.println(info.toString());
     }
 
 
