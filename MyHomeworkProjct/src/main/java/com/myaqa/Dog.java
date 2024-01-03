@@ -3,7 +3,8 @@ package com.myaqa;
 public class Dog extends Animal {
     private static int counterDogs = 0;
 
-    public Dog() {
+    public Dog(String name) {
+        super(name);
         counterDogs++;
     }
 
@@ -15,9 +16,9 @@ public class Dog extends Animal {
     @Override
     public void run(int distance) {
         if (distance <= 500) {
-            System.out.println("Собака пробежала " + distance + " м.");
+            System.out.println(getName() + " пробежала " + distance + " м.");
         } else {
-            System.out.println("Собака не может пробежать " + distance + " м.");
+            System.out.println(getName() + " не может пробежать " + distance + " м.");
         }
     }
 
@@ -25,9 +26,9 @@ public class Dog extends Animal {
     @Override
     public void swim(int distance) {
         if (distance <= 10) {
-            System.out.println("Собака проплыла " + distance + " м.");
+            System.out.println(getName() + " проплыла " + distance + " м.");
         } else {
-            System.out.println("Собака не может проплыть " + distance + " м.");
+            System.out.println(getName() + " не может проплыть " + distance + " м.");
         }
     }
 }

@@ -2,20 +2,25 @@ package com.myaqa;
 
 public class Main {
     public static void main(String[] args) {
+        Dog myDog = new Dog("Hachi");
+        myDog.swim(5);
+
+        Cat firstCat = new Cat("Garfield");
+        firstCat.swim(5);
+        Cat secondCat = new Cat("Ghost");
+        secondCat.run(200);
+        Cat thirdCat = new Cat("Summer");
+        thirdCat.run(201);
+
         Cat[] myCats = new Cat[3];
-        for (int i = 0; i < myCats.length; i++) {
-            myCats[i] = new Cat();
-        }
+        myCats[0] = firstCat;
+        myCats[1] = secondCat;
+        myCats[2] = thirdCat;
 
         Bowl myBowl = new Bowl(15);
 
         for (Cat cat : myCats) {
             cat.eat(myBowl.getFoodAmount());
-        }
-
-        System.out.println("Кот сыт?");
-        for (Cat cat : myCats) {
-            System.out.println("Кот " + cat.isFull());
         }
 
         myBowl.addFood(10);
