@@ -12,12 +12,12 @@ public class Main {
         System.out.println("Уникальные слова: " + uniqueWords);
 
         Map<String, Integer> wordCountMap = new HashMap<>();
-        for (String word : wordsList) {
+        for (String word: wordsList) {
             wordCountMap.put(word, wordCountMap.getOrDefault(word, 0) + 1);
         }
 
         System.out.println("Количество повторений каждого слова:");
-        for (Map.Entry<String, Integer> entry : wordCountMap.entrySet()) {
+        for (Map.Entry<String, Integer> entry: wordCountMap.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
 
