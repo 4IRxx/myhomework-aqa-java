@@ -16,7 +16,4 @@ public class MyArrayDataException extends Exception {
     public int getColumnIndex() {
         return columnIndex;
     }
-
-
-
 }
