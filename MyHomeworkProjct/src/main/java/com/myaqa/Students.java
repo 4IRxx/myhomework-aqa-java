@@ -83,7 +83,6 @@ public class Students {
     }
 
     public Collection<Student> getDraftEligibleStudents() {
-        // Фильтруем студентов, которым грозит повестка
         return students.stream()
                 .filter(student -> student.getGender() == Gender.MAN && isDraftEligible(student.getAge()))
                 .collect(Collectors.toList());
@@ -92,14 +91,12 @@ public class Students {
     public void printDraftEligibleStudents() {
         Collection<Student> draftEligibleStudents = getDraftEligibleStudents();
 
-        // Выводим информацию о каждом студенте
         for (Student student : draftEligibleStudents) {
             System.out.println(student);
         }
     }
 
     private boolean isDraftEligible(int age) {
-        // Проверка, подходит ли возраст для призыва
         return age >= 18 && age <= 27;
     }
 }
