@@ -5,15 +5,12 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Students {
-    private Collection<Student> students;
-    public Students() {
-        this.students = Arrays.asList(
-                new Student("Дмитрий", 17, Gender.MAN),
-                new Student("Максим", 20, Gender.MAN),
-                new Student("Екатерина", 20, Gender.WOMAN),
-                new Student("Михаил", 28, Gender.MAN)
-        );
-    }
+    Collection<Student> students = Arrays.asList(
+            new Student("Дмитрий", 17, Gender.MAN),
+            new Student("Максим", 20, Gender.MAN),
+            new Student("Екатерина", 20, Gender.WOMAN),
+            new Student("Михаил", 28, Gender.MAN)
+    );
 
     private enum Gender {
         MAN,
