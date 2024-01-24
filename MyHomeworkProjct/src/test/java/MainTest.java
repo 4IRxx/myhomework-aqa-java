@@ -1,7 +1,5 @@
 import com.myaqa.Main;
 import org.junit.Test;
-
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MainTest {
@@ -11,4 +9,3 @@ public class MainTest {
             assertEquals(15, result, "Expected sum is incorrect");
         }
     }
-
