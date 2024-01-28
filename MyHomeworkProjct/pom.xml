@@ -13,5 +13,22 @@
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
+    <dependencies>
+        <!-- Зависимость для JUnit 5 -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.8.1</version> <!-- Укажите актуальную версию -->
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Зависимость для JUnit Jupiter Engine -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.8.1</version> <!-- Укажите актуальную версию -->
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
 </project>
