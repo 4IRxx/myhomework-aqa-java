@@ -39,6 +39,10 @@ public class MtsByTest {
 
         assertFalse(paymentLogos.isEmpty(), "Логотипы отсутствуют");
         assertEquals(6, paymentLogos.size(), "Неверное количество логотипов");
+
+        for (WebElement logo : paymentLogos) {
+            assertTrue(logo.isDisplayed(), "Логотип не отображается");
+        }
     }
 
     @Test
