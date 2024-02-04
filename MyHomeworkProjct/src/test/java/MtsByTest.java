@@ -14,9 +14,11 @@ public class MtsByTest {
 
     @BeforeAll
     public static void setUp() {
+        System.setProperty("webdriver.chrome.driver", "C:/chromedriver/chromedriver.exe");
         mts = new ChromeDriver();
 
         mts.get("https://www.mts.by/");
+        mts.manage().window().maximize();
 
         try {
             WebElement acceptButton = mts.findElement(By.cssSelector(".btn.btn_black.cookie__ok"));
