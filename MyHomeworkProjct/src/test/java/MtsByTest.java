@@ -16,6 +16,8 @@ public class MtsByTest {
 
     @BeforeAll
     public static void setUp() {
+        System.setProperty("webdriver.chrome.driver", "C:/chromedriver/chromedriver.exe");
+
         mts = new ChromeDriver();
 
         mts.get("https://www.mts.by/");
@@ -51,7 +53,7 @@ public class MtsByTest {
         continueButton.click();
 
         try {
-            Thread.sleep(3500);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -102,7 +104,6 @@ public class MtsByTest {
         WebDriverWait wait = new WebDriverWait(mts, Duration.ofSeconds(10));
 
         WebElement selectNow = mts.findElement(By.xpath("//span[@class='select__now' and contains(text(), 'Услуги связи')]"));
-        selectNow.click();
 
         WebElement phoneInput = mts.findElement(By.id("connection-phone"));
         String phoneField = phoneInput.getAttribute("placeholder");
@@ -163,12 +164,6 @@ public class MtsByTest {
 
         WebElement debt = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[@class='select__option' and text()='Задолженность']")));
         debt.click();
-
-        try {
-            Thread.sleep(2500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         WebElement billDebt = mts.findElement(By.id("score-arrears"));
         String billDebtField = billDebt .getAttribute("placeholder");
