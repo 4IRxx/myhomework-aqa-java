@@ -3,9 +3,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,8 +18,6 @@ public class MtsByTest {
     public static void setUp() {
         System.setProperty("webdriver.chrome.driver", "C:/chromedriver/chromedriver.exe");
         mts = new ChromeDriver();
-
-        mts.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 
         mts.get("https://www.mts.by/");
         mts.manage().window().maximize();
@@ -65,6 +64,8 @@ public class MtsByTest {
 
     @Test
     public void checkContinueButton() {
+        WebDriverWait wait = new WebDriverWait(mts, Duration.ofSeconds(10));
+
         WebElement selectNow = mts.findElement(By.xpath("//span[@class='select__now' and contains(text(), 'Услуги связи')]"));
         selectNow.click();
 
@@ -79,8 +80,13 @@ public class MtsByTest {
 
         WebElement continueButton = mts.findElement(By.xpath("//form[@id='pay-connection']//button[@type='submit']"));
         assertTrue(continueButton.isEnabled(), "Кнопка 'Продолжить' не кликабельна");
-
         continueButton.click();
+
+        WebElement iframeElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("iframe.bepaid-iframe")));
+        mts.switchTo().frame(iframeElement);
+
+        System.out.println("Переключение на фрейм выполнено успешно.");
+
     }
 
     @AfterEach
