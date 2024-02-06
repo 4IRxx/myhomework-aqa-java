@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,6 +17,8 @@ public class MtsByTest {
     public static void setUp() {
         System.setProperty("webdriver.chrome.driver", "C:/chromedriver/chromedriver.exe");
         mts = new ChromeDriver();
+
+        mts.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 
         mts.get("https://www.mts.by/");
         mts.manage().window().maximize();
