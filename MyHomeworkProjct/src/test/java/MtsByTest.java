@@ -33,6 +33,8 @@ public class MtsByTest {
 
     @Test
     public void checkContinueButton() {
+        WebDriverWait wait = new WebDriverWait(mts, Duration.ofSeconds(60));
+
         WebElement selectNow = mts.findElement(By.xpath("//span[@class='select__now' and contains(text(), 'Услуги связи')]"));
         selectNow.click();
 
@@ -52,17 +54,11 @@ public class MtsByTest {
 
         continueButton.click();
 
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        WebElement iframeElement = mts.findElement(By.cssSelector("iframe.bepaid-iframe"));
+        WebElement iframeElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("iframe.bepaid-iframe")));
 
         mts.switchTo().frame(iframeElement);
 
-        WebElement actualSumElement = mts.findElement(By.xpath("//p[@class='header__payment-amount']"));
+        WebElement actualSumElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[@class='header__payment-amount']")));
         String actualSum = actualSumElement.getText();
         assertEquals(expectedSum + ".00 BYN", actualSum,  "Сумма оплаты не совпадает с ожидаемой");
 
@@ -101,7 +97,7 @@ public class MtsByTest {
     }
     @Test
     public void checkBlankFields() {
-        WebDriverWait wait = new WebDriverWait(mts, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(mts, Duration.ofSeconds(60));
 
         WebElement selectNow = mts.findElement(By.xpath("//span[@class='select__now' and contains(text(), 'Услуги связи')]"));
 
@@ -125,7 +121,7 @@ public class MtsByTest {
         WebElement homeInternet = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[@class='select__option' and text()='Домашний интернет']")));
         homeInternet.click();
 
-        WebElement phoneInternet = mts.findElement(By.id("internet-phone"));
+        WebElement phoneInternet = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("internet-phone")));
         String phoneInternetField = phoneInternet.getAttribute("placeholder");
         assertTrue(phoneInternet.isDisplayed(), "Текст не виден");
         assertEquals("Номер абонента", phoneInternetField, "Текст не совпадает");
@@ -145,7 +141,7 @@ public class MtsByTest {
         WebElement installment = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[@class='select__option' and text()='Рассрочка']")));
         installment.click();
 
-        WebElement billInstalment = mts.findElement(By.id("score-instalment"));
+        WebElement billInstalment = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("score-instalment")));
         String billInstalmentField = billInstalment .getAttribute("placeholder");
         assertTrue(billInstalment.isDisplayed(), "Текст не виден");
         assertEquals("Номер счета на 44", billInstalmentField, "Текст не совпадает");
@@ -165,7 +161,7 @@ public class MtsByTest {
         WebElement debt = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[@class='select__option' and text()='Задолженность']")));
         debt.click();
 
-        WebElement billDebt = mts.findElement(By.id("score-arrears"));
+        WebElement billDebt = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("score-arrears")));
         String billDebtField = billDebt .getAttribute("placeholder");
         assertTrue(billDebt.isDisplayed(), "Текст не виден");
         assertEquals("Номер счета на 2073", billDebtField, "Текст не совпадает");
