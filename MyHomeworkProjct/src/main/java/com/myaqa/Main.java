@@ -1,7 +1,11 @@
 package com.myaqa;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import pages.HomePage;
+
 public class Main {
     public static void main(String[] args) {
-        // Основной класс в главной ветке - источник ветвления
+      //
     }
 }
