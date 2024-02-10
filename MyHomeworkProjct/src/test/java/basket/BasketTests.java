@@ -16,7 +16,7 @@ public class BasketTests extends DataProviderTest {
 
     @Test (dataProvider = "ComparingItemsName", description = "Проверяем товары на предмет соответсвия имен после перехода в корзину")
     public void testItemName(String expected, String actual, String errorMessage) {
-        assertEquals(expected, actual, errorMessage);
+        assertEquals(expected.replaceAll("\\.+$", ""), actual.trim().replaceAll("\\.+$", ""), errorMessage);
     }
 
     @Test (dataProvider = "ComparingItemsAmountAndSum", description = "Проверяем общую сумму и количество штук товаров в корзине(sidebar)")

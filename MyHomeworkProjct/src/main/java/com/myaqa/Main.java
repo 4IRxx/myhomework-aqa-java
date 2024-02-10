@@ -6,6 +6,6 @@ import pages.HomePage;
 
 public class Main {
     public static void main(String[] args) {
-      //
+      //Попробовал реализовать Page Object Model
     }
 }

@@ -14,11 +14,11 @@ import java.util.List;
 
 
 public class HomePage {
-    private final WebDriver driver;
-    private final WebDriverWait wait;
-    private final By basketGoButton = By.cssSelector("a[data-wba-header-name='Cart']");
-    private final By popupConfirm = By.cssSelector("div[class*='popup-list-of-sizes'] label");
-    private final By popupSize = By.cssSelector("p[class*='product-card__sizes']>a[data-size-name]");
+    private WebDriver driver;
+    private WebDriverWait wait;
+    private final By BASKET_BUTTON = By.cssSelector("a[data-wba-header-name='Cart']");
+    private final By POPUP_CONFIRM = By.cssSelector("div[class*='popup-list-of-sizes'] label");
+    private final By POPUP_SIZE = By.cssSelector("p[class*='product-card__sizes']>a[data-size-name]");
 
 
     public HomePage(WebDriver driver, WebDriverWait wait) {
@@ -63,51 +63,51 @@ public class HomePage {
     }
 
     public BasketPage goToBasket() {
-        wait.until(ExpectedConditions.elementToBeClickable(basketGoButton)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(BASKET_BUTTON)).click();
         return new BasketPage(driver);
     }
 
     public class ItemInfo {
         private final WebElement itemInfo;
-        private final By itemName = By.cssSelector("span.product-card__name");
-        private final By itemLowerPrice = By.tagName("ins");
-        private final By itemPrice = By.tagName("del");
-        private final By basketButton = By.cssSelector("a[href='/lk/basket']");
+        private final By ITEM_NAME = By.cssSelector("span.product-card__name");
+        private final By ITEM_LOWER_PRICE = By.tagName("ins");
+        private final By ITEM_PRICE = By.tagName("del");
+        private final By BASKET_BUTTON = By.cssSelector("a[href='/lk/basket']");
 
         public ItemInfo(WebElement itemInfo) {
             this.itemInfo = itemInfo;
         }
 
         public String getItemName() {
-            String text = this.itemInfo.findElement(itemName).getText();
+            String text = this.itemInfo.findElement(ITEM_NAME).getText();
             text = text.replaceFirst("^\\s*/\\s*", "");
             return text;
         }
 
         public String getItemLowerPrice() {
-            String text = this.itemInfo.findElement(itemLowerPrice).getText();
+            String text = this.itemInfo.findElement(ITEM_LOWER_PRICE).getText();
             text = text.replaceFirst("^\\s*/\\s*", "");
             return text;
         }
 
         public String getItemPrice() {
-            String text = this.itemInfo.findElement(itemPrice).getText();
+            String text = this.itemInfo.findElement(ITEM_PRICE).getText();
             text = text.replaceFirst("^\\s*/\\s*", "");
             return text;
         }
 
         public void clickAdToBasket() {
             if (this.checkPopup()) {
-                this.itemInfo.findElement(basketButton).click();
-                wait.until(ExpectedConditions.elementToBeClickable(popupConfirm)).click();
+                this.itemInfo.findElement(BASKET_BUTTON).click();
+                wait.until(ExpectedConditions.elementToBeClickable(POPUP_CONFIRM)).click();
             } else {
-                this.itemInfo.findElement(basketButton).click();
+                this.itemInfo.findElement(BASKET_BUTTON).click();
             }
         }
 
         public boolean checkPopup() {
             try {
-                this.itemInfo.findElement(popupSize);
+                this.itemInfo.findElement(POPUP_SIZE);
                 return true;
             } catch (NoSuchElementException e) {
                 return false;

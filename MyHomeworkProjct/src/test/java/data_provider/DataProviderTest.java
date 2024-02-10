@@ -28,13 +28,13 @@ public class DataProviderTest extends BaseTests {
         Object[][] testData = new Object[numItems * 2][3];
 
         for (int i = 0; i < numItems; i++) {
-            testData[i * 2][0] = itemCardslist.get(i).getLowerPrice();
-            testData[i * 2][1] = basketCardslist.get(i).getLowerPrice();
-            testData[i * 2][2] = "Цена со скидкой \"" + itemCardslist.get(i).getName() + "\" изменилась\"";
+            testData[i * 2][0] = itemCardslist.get(i).getLOWER_PRICE();
+            testData[i * 2][1] = basketCardslist.get(i).getLOWER_PRICE();
+            testData[i * 2][2] = "Цена со скидкой \"" + itemCardslist.get(i).getNAME() + "\" изменилась\"";
 
-            testData[i * 2 + 1][0] = itemCardslist.get(i).getPrice();
-            testData[i * 2 + 1][1] = basketCardslist.get(i).getPrice();
-            testData[i * 2 + 1][2] = "Цена без скидки \"" + itemCardslist.get(i).getName() + "\" изменилась";
+            testData[i * 2 + 1][0] = itemCardslist.get(i).getPRICE();
+            testData[i * 2 + 1][1] = basketCardslist.get(i).getPRICE();
+            testData[i * 2 + 1][2] = "Цена без скидки \"" + itemCardslist.get(i).getNAME() + "\" изменилась";
         }
         return testData;
     }
@@ -45,8 +45,8 @@ public class DataProviderTest extends BaseTests {
         Object[][] testData = new Object[size][3];
 
         for (int i = 0; i < size; i++) {
-            testData[i][0] = itemCardslist.get(i).getName();
-            testData[i][1] = basketCardslist.get(i).getName();
+            testData[i][0] = itemCardslist.get(i).getNAME();
+            testData[i][1] = basketCardslist.get(i).getNAME();
             testData[i][2] = "Имя товара " + (i + 1) + " не совпадает";
         }
         return testData;

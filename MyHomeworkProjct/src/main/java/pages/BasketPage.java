@@ -20,7 +20,7 @@ public class BasketPage {
     private final By ITEM_DISCOUNT_PRICE = By.cssSelector("div.list-item__price-new");
     private final By ITEM_PRICE = By.cssSelector("div.list-item__price-old");
     private final By BASKET_CARDS = By.cssSelector("div.list-item__wrap");
-    private By sidebar = By.cssSelector("div.sidebar__sticky-wrap");
+    private final By SIDEBAR = By.cssSelector("div.sidebar__sticky-wrap");
 
 
     public BasketPage (WebDriver driver) {
@@ -46,7 +46,7 @@ public class BasketPage {
     }
 
     public BasketSidebar getBasketSidebar() {
-        WebElement bar = wait.until(ExpectedConditions.visibilityOfElementLocated(sidebar));
+        WebElement bar = wait.until(ExpectedConditions.visibilityOfElementLocated(SIDEBAR));
         return new BasketSidebar(bar);
     }
 
@@ -54,7 +54,7 @@ public class BasketPage {
         int sum = 0;
 
         for (BasketCard c: list) {
-            String str = c.getLowerPrice();
+            String str = c.getLOWER_PRICE();
             String format = str.replaceAll("[^0-9]", "");
             int price = Integer.parseInt(format);
             sum += price;
@@ -64,15 +64,14 @@ public class BasketPage {
 
     public class BasketSidebar {
         private WebElement basketSidebar;
-
-        private By top = By.cssSelector("div[class*='b-top__count line']");
+        private final By TOP = By.cssSelector("div[class*='b-top__count line']");
 
         public BasketSidebar(WebElement basketSidebar) {
             this.basketSidebar = basketSidebar;
         }
 
         public int getAmount() {
-            String text = this.basketSidebar.findElement(top).getText();
+            String text = this.basketSidebar.findElement(TOP).getText();
             String[] lines = text.split("\\n");
             String quantityLine = lines[0];
             String priceLine = lines[1];
@@ -81,7 +80,7 @@ public class BasketPage {
         }
 
         public int getSum() {
-            String text = this.basketSidebar.findElement(top).getText();
+            String text = this.basketSidebar.findElement(TOP).getText();
             String[] lines = text.split("\\n");
             String quantityLine = lines[0];
             String priceLine = lines[1];
