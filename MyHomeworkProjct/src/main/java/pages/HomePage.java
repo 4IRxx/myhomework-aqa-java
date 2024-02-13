@@ -1,5 +1,6 @@
 package pages;
 
+import frames.BePaidFrame;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,10 +16,6 @@ public class HomePage {
     public WebDriver driver;
     @FindBy(xpath = "//button[@id='cookie-agree']")
     private WebElement buttonCookieAgree;
-    @FindBy(xpath = "//div[@class='pay__wrapper']/h2")
-    private WebElement blockTitle;
-    @FindBy(xpath = "//div[@class='pay__partners']//img")
-    private List<WebElement> logoList;
     @FindBy(xpath = "//div[@class='pay__wrapper']//span[@class='select__now']")
     private WebElement selectedOption;
     @FindBy(xpath = "//div[@class='pay__wrapper']//button[@class='select__header']")
@@ -33,6 +30,9 @@ public class HomePage {
     private WebElement continueButton;
     @FindBy(xpath = "//iframe[@class='bepaid-iframe']")
     private WebElement frameBePaid;
+    @FindBy(xpath = "//div[@class='pay__forms']//input")
+    private List<WebElement> formFieldsList;
+
 
     public HomePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -47,20 +47,22 @@ public class HomePage {
         }
     }
 
-    public String getBlockTitle() {
-        return blockTitle.getText();
-    }
-
-    public List<WebElement> getLogoList() {
-        return logoList;
-    }
-
     public void clickExactOption(String option) {
+
         if (!selectedOption.getText().equals(option)) {
             buttonDropdown.click();
             WebElement exactOption = driver.findElement(By.xpath("//p[@class='select__option' and text()='"+ option +"']"));
             exactOption.click();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
+    }
+
+    public List<WebElement> getFormFieldsList() {
+        return formFieldsList;
     }
 
     public void inputPhoneNumber(String phoneNumber) {
@@ -72,10 +74,12 @@ public class HomePage {
         emailField.sendKeys(email);
     }
 
-    public WebElement clickContinueButton() {
+    public BePaidFrame clickContinueButton() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         continueButton.click();
-        return wait.until(ExpectedConditions.visibilityOf(frameBePaid));
+        WebElement frame = wait.until(ExpectedConditions.visibilityOf(frameBePaid));
+        driver.switchTo().frame(frame);
+        return new BePaidFrame(driver);
     }
 
     public void goHomePage() {
