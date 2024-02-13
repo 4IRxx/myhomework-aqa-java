@@ -25,8 +25,8 @@ public class HomePage {
     private WebElement selectedOption;
     @FindBy(xpath = "//div[@class='pay__wrapper']//button[@class='select__header']")
     private WebElement buttonDropdown;
-    @FindBy(id = "connection-phone") // если id уникальный все равно лучше xpath делать
-    private WebElement phoneField;   // (//form[@id='pay-connection']//input[@id='connection-phone'])?
+    @FindBy(id = "connection-phone")
+    private WebElement phoneField;
     @FindBy(id = "connection-sum")
     private WebElement sumField;
     @FindBy(id = "connection-email")
