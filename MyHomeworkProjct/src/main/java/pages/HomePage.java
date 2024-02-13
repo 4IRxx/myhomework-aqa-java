@@ -65,7 +65,7 @@ public class HomePage {
     public void clickExactOption(String option) {
         if (!selectedOption.getText().equals(option)) {
             buttonDropdown.click();
-            WebElement exactOption = driver.findElement(By.xpath("p[@class='select__option' and text()='"+ option +"']"));
+            WebElement exactOption = driver.findElement(By.xpath("//p[@class='select__option' and text()='"+ option +"']"));
             exactOption.click();
         }
     }
