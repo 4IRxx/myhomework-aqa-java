@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -55,6 +56,16 @@ public class HomePage {
 
     public List<WebElement> getLogoList() {
         return logoList;
+    }
+
+    public WebElement getLogoByName(String logoName) {
+        List<WebElement> list = getLogoList();
+        for (WebElement w: list) {
+            if (w.getAttribute("alt").equals(logoName)) {
+                return w;
+            }
+        }
+        throw new NoSuchElementException("Логотип '" + logoName + "' не найден");
     }
 
     public HelpPage goHelpPage() {
