@@ -20,14 +20,6 @@ public class BePaidFrame {
     private WebElement sumAmountBtn;
     @FindBy(xpath = "//p[@class='header__payment-info']")
     private WebElement phoneNumber;
-    @FindBy(xpath = "//input[@formcontrolname='creditCard']/following-sibling::label")
-    private WebElement cardNumberField;
-    @FindBy(xpath = "//input[@formcontrolname='expirationDate']/following-sibling::label")
-    private WebElement cardDateField;
-    @FindBy(xpath = "//input[@formcontrolname='holder']/following-sibling::label")
-    private WebElement cardHolderField;
-    @FindBy(xpath = "//input[@formcontrolname='cvc']/following-sibling::label")
-    private WebElement cardCvcField;
     @FindBy(xpath = "//div[contains (@class, 'icons-container')]//img")
     private List<WebElement> logoList;
     @FindBy(xpath = "//input[@formcontrolname]/following-sibling::label")
@@ -90,18 +82,5 @@ public class BePaidFrame {
             }
         }
         throw new NoSuchElementException("Поле '" + fieldName + "' не найдено");
-    }
-
-    public String getCardNumberField() {
-        return cardNumberField.getText();
-    }
-    public String getCardDateField() {
-        return cardDateField.getText();
-    }
-    public String getCardHolderField() {
-        return cardHolderField.getText();
-    }
-    public String getCardCvcField() {
-        return cardCvcField.getText();
     }
 }
