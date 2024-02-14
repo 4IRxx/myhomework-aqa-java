@@ -6,9 +6,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
-import java.util.List;
-
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -39,7 +36,7 @@ public class PaymentFormTest extends BaseTest {
     @Test(dataProvider = "FieldsData")
     public void testFields(String option, String fieldId, String expectedFieldName) {
         homePage.clickExactOption(option);
-        WebElement field = homePage.getFieldByName(fieldId);
+        WebElement field = homePage.getFieldById(fieldId);
         String actualFieldName = field.getAttribute("placeholder");
         assertTrue(field.isDisplayed(), "Field with id '" + fieldId + "' is not displayed");
         assertEquals(actualFieldName, expectedFieldName, "Actual field name '" + fieldId + "' isn't matched expected one");

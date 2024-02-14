@@ -65,7 +65,7 @@ public class HomePage {
         return formFieldsList;
     }
 
-    public WebElement getFieldByName(String fieldId) {
+    public WebElement getFieldById(String fieldId) {
         List<WebElement> list = getFormFieldsList();
         for (WebElement field: list) {
             if (field.getAttribute("id").equals(fieldId)) {
