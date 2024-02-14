@@ -1,5 +1,6 @@
 package frames;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -38,7 +39,7 @@ public class BePaidFrame {
     }
 
     public String getSumAmount() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.visibilityOf(sumAmount));
         String textSumAmount = sumAmount.getText();
         String resultSumAmount = textSumAmount.replaceAll("[^0-9.]+", "").replaceAll("\\.0+$", "");
@@ -63,8 +64,32 @@ public class BePaidFrame {
         return logoList;
     }
 
+    public WebElement getLogoByName(String logoName) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        List<WebElement> list = getLogoList();
+        for (WebElement logo: list) {
+            wait.until(ExpectedConditions.visibilityOf(logo));
+            if (logo.getAttribute("src").contains(logoName)) {
+                return logo;
+            }
+        }
+        throw new NoSuchElementException("Логотип '" + logoName + "' не найден");
+    }
+
     public List<WebElement> getFieldsList() {
         return fieldsList;
+    }
+
+    public WebElement getFieldByName(String fieldName) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        List<WebElement> list = getFieldsList();
+        for (WebElement field: list) {
+            wait.until(ExpectedConditions.visibilityOf(field));
+            if (field.getText().equals(fieldName)) {
+                return field;
+            }
+        }
+        throw new NoSuchElementException("Поле '" + fieldName + "' не найдено");
     }
 
     public String getCardNumberField() {
