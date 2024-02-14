@@ -51,7 +51,7 @@ public class BePaidFrameTest extends BaseTest {
         };
     }
 
-    @Test(testName = "Test frame blank fields", dataProvider = "Fields")
+    @Test(testName = "Test frame blank fields", dataProvider = "Fields", description = "(there is no need check text match - we've already checked getText()) in method")
     public void testField(String field) {
         WebElement fieldElement = frame.getFieldByName(field);
         assertTrue(fieldElement.isDisplayed(), "Field is not displayed: " + field);
@@ -66,5 +66,4 @@ public class BePaidFrameTest extends BaseTest {
         assertEquals(actualSum, expectedSum, "Input sum in PaymentForm and sum in frame arent matched");
         assertEquals(actualNumber, expectedNumber, "Input phone number in PaymentForm and number in frame arent matched");
     }
-
 }

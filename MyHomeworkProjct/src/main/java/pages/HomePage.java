@@ -2,6 +2,7 @@ package pages;
 
 import frames.BePaidFrame;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -62,6 +63,16 @@ public class HomePage {
 
     public List<WebElement> getFormFieldsList() {
         return formFieldsList;
+    }
+
+    public WebElement getFieldByName(String fieldId) {
+        List<WebElement> list = getFormFieldsList();
+        for (WebElement field: list) {
+            if (field.getAttribute("id").equals(fieldId)) {
+                return field;
+            }
+        }
+        throw new NoSuchElementException("Поле '" + fieldId + "' не найдено");
     }
 
     public void inputPhoneNumber(String phoneNumber) {
