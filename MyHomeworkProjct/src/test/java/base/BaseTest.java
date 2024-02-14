@@ -9,7 +9,7 @@ import pages.HomePage;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
-    protected WebDriver driver;
+    private WebDriver driver;
     protected HomePage homePage;
 
     @BeforeClass
@@ -21,7 +21,6 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(ConfProperties.getProperty("homepage"));
     }
-
 
     @AfterClass
     public void turnDown() {
