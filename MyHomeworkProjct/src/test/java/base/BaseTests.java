@@ -17,7 +17,7 @@ public class BaseTests {
 
     @BeforeClass
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:/chromedriver/chromedriver.exe");
 
         driver = new ChromeDriver();
         driver.get("https://www.wildberries.ru/");
