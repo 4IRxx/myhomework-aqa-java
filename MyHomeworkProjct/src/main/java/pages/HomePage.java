@@ -33,7 +33,6 @@ public class HomePage {
     @FindBy(xpath = "//div[@class='pay__forms']//input")
     private List<WebElement> formFieldsList;
 
-
     public HomePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
