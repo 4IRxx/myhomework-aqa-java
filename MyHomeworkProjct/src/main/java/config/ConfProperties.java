@@ -9,7 +9,6 @@ public class ConfProperties {
     protected static Properties PROPERTIES;
     static {
         try {
-            //указание пути до файла с настройками
             fileInputStream = new FileInputStream("src/main/resources/conf.properties");
             PROPERTIES = new Properties();
             PROPERTIES.load(fileInputStream);

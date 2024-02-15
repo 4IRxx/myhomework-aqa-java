@@ -85,7 +85,7 @@ public class HomePage {
     }
 
     public BePaidFrame clickContinueButton() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         continueButton.click();
         WebElement frame = wait.until(ExpectedConditions.visibilityOf(frameBePaid));
         driver.switchTo().frame(frame);

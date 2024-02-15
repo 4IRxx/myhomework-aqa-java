@@ -42,7 +42,7 @@ public class BePaidFrameTest extends BaseTest {
     }
 
     @DataProvider(name = "Fields")
-    public Object[][] getFiledData() {
+    public Object[][] getFieldData() {
         return new Object[][]{
                 {"Номер карты"},
                 {"Срок действия"},
