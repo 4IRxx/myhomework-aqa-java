@@ -76,7 +76,8 @@ public class HomePage {
     }
 
     public void inputPhoneNumber(String phoneNumber) {
-        phoneField.sendKeys(phoneNumber); }
+        phoneField.sendKeys(phoneNumber);
+    }
     public void inputSum(String sum) {
         sumField.sendKeys(sum);
     }
@@ -85,7 +86,7 @@ public class HomePage {
     }
 
     public BePaidFrame clickContinueButton() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         continueButton.click();
         WebElement frame = wait.until(ExpectedConditions.visibilityOf(frameBePaid));
         driver.switchTo().frame(frame);
