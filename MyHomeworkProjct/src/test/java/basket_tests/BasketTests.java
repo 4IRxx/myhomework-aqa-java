@@ -1,4 +1,4 @@
-package basket;
+package basket_tests;
 
 import data_provider.DataProviderTest;
 import org.testng.annotations.Test;
