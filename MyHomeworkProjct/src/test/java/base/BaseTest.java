@@ -11,7 +11,6 @@ import java.net.URL;
 
 public class BaseTest {
     AppiumDriver driver;
-
     protected Calculator calculator;
 
     @BeforeTest
