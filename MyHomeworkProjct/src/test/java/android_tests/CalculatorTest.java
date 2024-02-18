@@ -1,9 +1,11 @@
 package android_tests;
 
 import base.BaseTest;
+import io.qameta.allure.*;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import static io.qameta.allure.SeverityLevel.CRITICAL;
 import static org.testng.Assert.assertEquals;
 
 public class CalculatorTest extends BaseTest {
@@ -18,6 +20,10 @@ public class CalculatorTest extends BaseTest {
     }
 
     @Test(dataProvider = "additionNumbers")
+    @Description("Test addition")
+    @Feature("Essential features")
+    @Severity(CRITICAL)
+    @Owner("Anton Simanchuk")
     public void testAddition(int numberOne, int numberTwo, int expectedResult) {
         int additionResult = calculator.addition(numberOne, numberTwo);
         assertEquals(additionResult, expectedResult, "Addition operation is not correct");
@@ -34,6 +40,10 @@ public class CalculatorTest extends BaseTest {
     }
 
     @Test(dataProvider = "deductionNumbers")
+    @Description("Test deduction")
+    @Feature("Essential features")
+    @Severity(CRITICAL)
+    @Owner("Anton Simanchuk")
     public void testDeduction(int numberOne, int numberTwo, int expectedResult) {
         int deductionResult = calculator.deduction(numberOne, numberTwo);
         assertEquals(deductionResult, expectedResult, "Deduction operation is not correct");
@@ -50,6 +60,10 @@ public class CalculatorTest extends BaseTest {
     }
 
     @Test(dataProvider = "multiplicationNumbers")
+    @Description("Test multiplication")
+    @Feature("Essential features")
+    @Severity(CRITICAL)
+    @Owner("Anton Simanchuk")
     public void testMultiplication(int numberOne, int numberTwo, int expectedResult) {
         int multiplicationResult = calculator.multiplication(numberOne, numberTwo);
         assertEquals(multiplicationResult, expectedResult, "Multiplication operation is not correct");
@@ -66,11 +80,19 @@ public class CalculatorTest extends BaseTest {
     }
 
     @Test(dataProvider = "divisionNumbers")
+    @Description("Test division")
+    @Feature("Essential features")
+    @Severity(CRITICAL)
+    @Owner("Anton Simanchuk")
     public void testDivision(int numberOne, int numberTwo, int expectedResult) {
         int divisionResult = calculator.division(numberOne, numberTwo);
         assertEquals(divisionResult, expectedResult, "Division operation is not correct");
     }
     @Test
+    @Description("Test division by zero")
+    @Feature("Essential features")
+    @Severity(CRITICAL)
+    @Owner("Anton Simanchuk")
     public void testDivisionByZero() {
         String errorMessage = calculator.divisionByZero(3);
         calculator.clickClearButton();
